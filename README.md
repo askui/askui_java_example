@@ -30,11 +30,11 @@ This repository demonstrates how to integrate AskUI automation testing with Java
    ```
 
 3. **Set up AskUI configuration**
-   - Create `.askui/Settings` directory in your project root
-   - Create `AskuiEnvironmentSettings.json` with your credentials
-   - Update environment variables in `AskUIJavaRunner.java`:
-     - `ASKUI_TOKEN`
-     - `ASKUI_WORKSPACE_ID`
+   - Update environment variables in AskUIJavaRunner.java
+   ```bash
+   $env:ASKUI_TOKEN="your_actual_token"
+   $env:ASKUI_WORKSPACE_ID="your_actual_workspace_id"
+   ```
 
 ## 📁 Project Structure
 
