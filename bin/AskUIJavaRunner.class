@@ -1,0 +1,68 @@
+// Source code is decompiled from a .class file using FernFlower decompiler.
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Map;
+
+public class AskUIJavaRunner {
+   private static final String DEFAULT_NPX_PATH = "npx.cmd";
+   private static final String JEST_COMMAND = "jest";
+
+   public AskUIJavaRunner() {
+   }
+
+   public static void main(String[] args) {
+      try {
+         Path projectRoot = Paths.get("C:", "Users", "nihar", "askui_first", "askui_example");
+         Path askuiSettingsPath = Paths.get("C:", "Users", "nihar", "askui_first", ".askui", "Settings", "AskuiEnvironmentSettings.json");
+         System.out.println("Starting AskUI test execution...");
+         System.out.println("Using AskUI settings from: " + String.valueOf(askuiSettingsPath));
+         ProcessBuilder processBuilder = new ProcessBuilder(new String[]{"npx.cmd", "jest", "--config", "jest.config.ts", "--testEnvironment", "@askui/jest-allure-circus", "--verbose", "--no-cache", "porsche_example.test.ts"});
+         processBuilder.redirectErrorStream(true);
+         processBuilder.directory(projectRoot.toFile());
+         Map<String, String> env = processBuilder.environment();
+         env.put("ASKUI_CONFIG_PATH", askuiSettingsPath.toString());
+         env.put("ASKUI_TOKEN", System.getenv("ASKUI_TOKEN"));
+         env.put("ASKUI_WORKSPACE_ID", System.getenv("ASKUI_WORKSPACE_ID"));
+         env.put("NODE_ENV", "test");
+         System.out.println("Working directory: " + processBuilder.directory().getAbsolutePath());
+         System.out.println("Executing command: " + String.join(" ", processBuilder.command()));
+         Process process = processBuilder.start();
+         Throwable var6 = null;
+         Object var7 = null;
+
+         try {
+            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+
+            String line;
+            try {
+               while((line = reader.readLine()) != null) {
+                  System.out.println(line);
+               }
+            } finally {
+               if (reader != null) {
+                  reader.close();
+               }
+
+            }
+         } catch (Throwable var17) {
+            if (var6 == null) {
+               var6 = var17;
+            } else if (var6 != var17) {
+               var6.addSuppressed(var17);
+            }
+
+            throw var6;
+         }
+
+         int exitCode = process.waitFor();
+         System.out.println("Test finished with exit code: " + exitCode);
+      } catch (Exception var18) {
+         System.err.println("Error running AskUI tests: " + var18.getMessage());
+         var18.printStackTrace();
+         System.exit(1);
+      }
+
+   }
+}
