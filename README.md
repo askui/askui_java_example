@@ -20,8 +20,8 @@ This repository demonstrates how to integrate AskUI automation testing with Java
 
 1. **Clone the repository**
    ```bash
-   git clone <repository-url>
-   cd askui-java-integration
+   git clone https://github.com/askui/askui_java_example.git
+   cd askui_java_example
    ```
 
 2. **Install Node.js dependencies**
@@ -76,7 +76,7 @@ The repository includes a sample test that demonstrates logging into a website:
 
 1. **Compile the Java runner**
    ```bash
-   javac -d target src/AskUIJavaRunner.java
+   javac -d target askui_java/src/AskUIJavaRunner.java
    ```
 
 2. **Execute tests**
