@@ -2,6 +2,12 @@
 
 This repository demonstrates how to integrate AskUI automation testing with Java, allowing you to run AskUI TypeScript tests from a Java environment.
 
+### TODO
+1. Use askui-shell
+2. npm install in typescript-askui-project
+3. Adapt Readme.md so that everything is working!
+
+
 ## 🚀 Features
 
 - Run AskUI automation tests from Java
