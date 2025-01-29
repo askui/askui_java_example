@@ -2,11 +2,6 @@
 
 This repository demonstrates how to integrate AskUI automation testing with Java, allowing you to run AskUI TypeScript tests from a Java environment.
 
-### TODO
-1. Use askui-shell
-2. npm install in typescript-askui-project
-3. Adapt Readme.md so that everything is working!
-
 ## 🚀 Features
 
 - Run AskUI automation tests from Java
@@ -19,7 +14,8 @@ This repository demonstrates how to integrate AskUI automation testing with Java
 - Node.js and npm
 - Visual Studio Code
 - Chrome browser
-- AskUI account and credentials (workspace ID and token)
+- AskUI account and credentials (workspace id and token) ([Login here](https://app.askui.com/))
+- Install AskUI Suite [Download here](https://docs.askui.com/docs/general/Getting%20Started/start)
 
 ## 🛠️ Installation
 
@@ -30,14 +26,15 @@ This repository demonstrates how to integrate AskUI automation testing with Java
    ```
 
 2. **Install askui dependencies**
-   Open project, In VS-terminal type
+   Open project, In VS-terminal type. ([Download AskUI Suite](https://docs.askui.com/docs/general/Getting%20Started/start))
    ```bash
    askui-shell
    ```
 
 4. **Set up AskUI configuration**
-   - Go to typescript-askui-project folder in the terminal, Update environment variables and npm install
+   - Go to typescript-askui-project folder in the terminal, Update environment variables and npm install. (*Open [app.askui.com](https://app.askui.com/) -> Access Tokens -> Create Token*)
    ```bash
+   # Installes node dependencies
    npm install
    AskUI-SetSettings -WorkspaceId <workspace id> -Token <access token>
    ```
@@ -79,6 +76,14 @@ AskUI-StartController -RunInBackground
    ```bash
    java -cp target AskUIJavaRunner
    ```
+
+4. **Show Output**
+   ```bash
+   <insert start>
+   ...
+   <Jest Test Report>
+   ```
+
 
 ## ⚠️ Important Notes
 
