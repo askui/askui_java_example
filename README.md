@@ -7,7 +7,6 @@ This repository demonstrates how to integrate AskUI automation testing with Java
 2. npm install in typescript-askui-project
 3. Adapt Readme.md so that everything is working!
 
-
 ## 🚀 Features
 
 - Run AskUI automation tests from Java
@@ -30,20 +29,21 @@ This repository demonstrates how to integrate AskUI automation testing with Java
    cd askui_java_example
    ```
 
-2. **Install Node.js dependencies**
+2. **Install askui dependencies**
+   Open project, In VS-terminal type
    ```bash
-   npm install askui @askui/jest-allure-circus ts-jest @types/jest
+   askui-shell
    ```
 
-3. **Set up AskUI configuration**
-   - Update environment variables in AskUIJavaRunner.java
+4. **Set up AskUI configuration**
+   - Go to typescript-askui-project folder in the terminal, Update environment variables and npm install
    ```bash
-   $env:ASKUI_TOKEN="your_actual_token"
-   $env:ASKUI_WORKSPACE_ID="your_actual_workspace_id"
+   npm install
+   AskUI-SetSettings -WorkspaceId <workspace id> -Token <access token>
    ```
 
 ## 📁 Project Structure
-
+```
 java_askui/
 ├── .vscode/
 ├── src/
@@ -52,27 +52,11 @@ java_askui/
 │   └── AskUIJavaRunner.class      # Compiled Java class file
 ├── settings.json
 └── README.md
-
-## 🔧 Configuration Files in askui project
-
-- Make sure you change the following ts files in your askui repository ( that you have created by installing askui and wrote a sample.test.ts file)
-
-### AskUI Helper (askui-helper.ts)
-```typescript
-// Configuration for AskUI controller and client
-// See helpers/askui-helper.ts in repository by clicking on askui-helper.ts link above
-```
-
-### Jest Configuration (jest.config.ts)
-```typescript
-// Test runner configuration
-// See jest.config.ts in repository by clicking on jest.config.ts link above
-```
 ```
 
 ## 📝 Sample Test
 
-The repository includes a sample test that demonstrates logging into a website:
+The repository includes a sample test that demonstrates logging into a website, which is what we would call to test in this project:
 
 ```typescript
 // See sample.test.ts in repository, place it in your askui folder that is created after you have installed askui in VS code
@@ -80,31 +64,21 @@ The repository includes a sample test that demonstrates logging into a website:
 
 ## 🚀 Running Tests
 
-1. **Compile the Java runner**
+
+1. **Start askui-controller**
+```
+AskUI-StartController -RunInBackground
+```
+
+2. **Compile the Java runner**
    ```bash
    javac -d target askui_java/src/AskUIJavaRunner.java
    ```
 
-2. **Execute tests**
+3. **Execute tests**
    ```bash
    java -cp target AskUIJavaRunner
    ```
-
-## ⚙️ Customization
-
-### Modifying Test Path
-Update the `projectRoot` path in `AskUIJavaRunner.java` to match your project structure:
-
-```java
-Path projectRoot = Paths.get("YOUR_PROJECT_PATH");
-```
-
-### Updating AskUI Settings
-Modify the `askuiSettingsPath` in `AskUIJavaRunner.java`:
-
-```java
-Path askuiSettingsPath = Paths.get("PATH_TO_ASKUI_SETTINGS");
-```
 
 ## ⚠️ Important Notes
 
