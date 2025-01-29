@@ -1,28 +1,15 @@
-import { UiControlClient, UiController } from 'askui';
+import { UiControlClient } from 'askui';
 import { AskUIAllureStepReporter } from '@askui/askui-reporters';
 
+// Client is necessary to use the askui API
+// eslint-disable-next-line import/no-mutable-exports
 let aui: UiControlClient;
-let controller: UiController;
 
 jest.setTimeout(60 * 1000 * 60);
 
 beforeAll(async () => {
-  // Start the UI Controller
-  controller = new UiController({
-    /**
-     * Optional: Configure the UI Controller
-     * port: 6769,
-     * host: '127.0.0.1',
-     */
-  });
-  
-  // Start the controller
-  await controller.start();
-
-  // Build and connect the client
   aui = await UiControlClient.build({
     reporter: new AskUIAllureStepReporter(),
-    }
   });
 
   await aui.connect();
@@ -43,15 +30,7 @@ afterEach(async () => {
 });
 
 afterAll(async () => {
-  // Disconnect client
-  if (aui) {
-    await aui.disconnect();
-  }
-  
-  // Stop the controller
-  if (controller) {
-    await controller.stop();
-  }
+  aui.disconnect();
 });
 
 export { aui };
