@@ -101,7 +101,15 @@ AskUI-StartController -RunInBackground
    ```bash
    <insert start>
    ...
-   <Jest Test Report>
+      Starting AskUI test execution...
+    PATH: C:\Program Files\askui GmbH\AskUI Suite\DependencyCache\Links\Powershell;C:\Program Files\askui GmbH\AskUI Suite\DependencyCache\Links\NodeJS;C:\Program Files\askui GmbH\AskUI 
+    Suite\DependencyCache\Links\Powershell;C:\Program Files\Common................ 
+    Working directory: C:\Users\xxxxxt
+    Executing command: npm.cmd run askui
+
+   > typescript-askui-project@1.0.0 askui
+   > jest --config ./askui_example/jest.config.ts --runInBand<Jest Test Report>
+   ......
    ```
 
 
